@@ -8,19 +8,20 @@ def get_all_sheets(spreadsheet_key)
 	uri = URI(url)
 	response = Net::HTTP.get(uri)
 	json = JSON.parse(response)
-	sheet_titles = json['feed']['entry'].map{|e| e['title']['$t']}
+
+	sheets = []
+	json['feed']['entry'].each do |entry|
+		sheet = {}
+		sheet[:slug] = entry['title']['$t']
+		sheet[:csv_url] = entry['link'].select {|l| l['type'] == 'text/csv'}.first['href']
+		sheets << sheet
+	end
 
 	toc = []
-	sheet_titles.first(2).last(1).each do |sheet_title|
-		# via http://stackoverflow.com/questions/33713084/download-link-for-google-spreadsheets-csv-export-with-multiple-sheets
-
-		# this would also work:
-		# from each entry in json['feed']['entry'], get entry['link'] where 'type' == 'text/csv'
-		# a bit more cumbersome because it requires checking each hash in entry['link']
-
-		title = get_sheet_data(spreadsheet_key, sheet_title)
+	sheets.each do |sheet|
+		title = get_sheet_data(sheet[:csv_url])
 		contents_entry = {}
-		contents_entry[:slug] = sheet_title
+		contents_entry[:slug] = sheet[:slug]
 		contents_entry[:title_en] = title[:english]
 		contents_entry[:title_es] = title[:spanish]
 		toc << contents_entry
@@ -28,9 +29,7 @@ def get_all_sheets(spreadsheet_key)
 	puts toc
 end
 
-def get_sheet_data(spreadsheet_key, sheet_title)
-	sheet_csv_url = "https://docs.google.com/spreadsheets/d/#{spreadsheet_key}/gviz/tq?tqx=out:csv&sheet=#{sheet_title}"
-	puts sheet_csv_url
+def get_sheet_data(sheet_csv_url)
 	open(sheet_csv_url, 'r:utf-8') do |f|
 		data = SmarterCSV.process(f)
 		parse_sheet_data(data)
@@ -46,7 +45,6 @@ def parse_sheet_data(data)
 	spanish = []
 
 	data.each_with_index do |row, row_index|
-
 		html_open = ''
 		html_close = ''
 
@@ -121,8 +119,11 @@ def parse_sheet_data(data)
 		original << original_html
 		english_html = html_open + format_text(row[:english]) + html_close
 		english << english_html
-		spanish_html = html_open + format_text(row[:spanish]) + html_close
-		spanish << spanish_html
+
+		if !row[:spanish].nil?
+			spanish_html = html_open + format_text(row[:spanish]) + html_close
+			spanish << spanish_html
+		end
 	end
 
 	original_all_html	= original.join("\n")
