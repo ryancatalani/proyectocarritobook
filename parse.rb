@@ -2,6 +2,8 @@ require 'net/http'
 require 'json'
 require 'open-uri'
 require 'smarter_csv'
+require 'erb'
+require 'tilt'
 
 def get_all_sheets(spreadsheet_key)
 	url = "https://spreadsheets.google.com/feeds/worksheets/#{spreadsheet_key}/public/basic?alt=json"
@@ -19,9 +21,15 @@ def get_all_sheets(spreadsheet_key)
 
 	toc = []
 	sheets.each do |sheet|
-		title = get_sheet_data(sheet[:csv_url])
+		chapter_data = get_sheet_data(sheet[:csv_url])
+
+		title = chapter_data[:title]
+		slug = sheet[:slug]
+		render_chapter(chapter_data, slug)
+
 		contents_entry = {}
-		contents_entry[:slug] = sheet[:slug]
+		contents_entry[:slug] = slug
+		contents_entry[:title_or] = title[:original]
 		contents_entry[:title_en] = title[:english]
 		contents_entry[:title_es] = title[:spanish]
 		toc << contents_entry
@@ -32,10 +40,14 @@ end
 def get_sheet_data(sheet_csv_url)
 	open(sheet_csv_url, 'r:utf-8') do |f|
 		data = SmarterCSV.process(f)
-		parse_sheet_data(data)
+		html = parse_sheet_data(data)
+
+		ret = {}
+		ret[:title]	= data.select{|d| d[:type].downcase == 'title'}.first
+		ret[:html] 	= html
 
 		# return the title row
-		return data.select{|d| d[:type].downcase == 'title'}.first
+		return ret
 	end
 end
 
@@ -126,15 +138,12 @@ def parse_sheet_data(data)
 		end
 	end
 
-	original_all_html	= original.join("\n")
-	english_all_html	= english.join("\n")
-	spanish_all_html	= spanish.join("\n")
+	html = {}
+	html[:original]	= original.join("\n")
+	html[:english]	= english.join("\n")
+	html[:spanish]	= spanish.join("\n")
 
-	puts original_all_html
-	puts ''
-	puts english_all_html
-	puts ''
-	puts spanish_all_html
+	return html
 end
 
 def format_text(text)
@@ -151,5 +160,12 @@ def format_text(text)
 	return text
 end
 
+def render_chapter(chapter_data, slug)
+	template = Tilt.new('chapter.html.erb')
+	fname = "render/chapters/#{slug}.html"
+	html = template.render(self, chapter_data: chapter_data)
+	File.write(fname, html)
+	puts "#{slug} done"
+end
 
 get_all_sheets('1x3mZhY0j5wXUnAnVwumKk5bSuqh2Xx6_9Srt0jbMVpE')

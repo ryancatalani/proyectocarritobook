@@ -2,12 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     smarter_csv (1.1.4)
+    tilt (2.0.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   smarter_csv
+  tilt
 
 RUBY VERSION
    ruby 2.3.0p0
