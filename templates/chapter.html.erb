@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Proyecto Carrito • <%= chapter_data[:title][:original] %></title>
+
+	<script src="https://use.typekit.net/aku6yve.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+</head>
+<body>
+
+	<%= Tilt.new('templates/header.html.erb').render %>
+	
+	<div class="chapter">
+		<div id="chapter_or" class="content_or">
+			<%= chapter_data[:html][:original] %>
+		</div>
+		<div id="chapter_en" class="content_en">
+			<%= chapter_data[:html][:english] %>
+		</div>
+		<div id="chapter_es" class="content_es">
+			<%= chapter_data[:html][:spanish] %>
+		</div>
+	</div>
+
+	<%= Tilt.new('templates/footer.html.erb').render %>
+
+</body>
+</html>

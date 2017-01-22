@@ -20,7 +20,7 @@ def get_all_sheets(spreadsheet_key)
 	end
 
 	toc = []
-	sheets.each do |sheet|
+	sheets.first(1).each do |sheet|
 		chapter_data = get_sheet_data(sheet[:csv_url])
 
 		title = chapter_data[:title]
@@ -161,7 +161,7 @@ def format_text(text)
 end
 
 def render_chapter(chapter_data, slug)
-	template = Tilt.new('chapter.html.erb')
+	template = Tilt.new('templates/chapter.html.erb')
 	fname = "render/chapters/#{slug}.html"
 	html = template.render(self, chapter_data: chapter_data)
 	File.write(fname, html)
