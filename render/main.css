@@ -1,0 +1,104 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font: 16px/1.4em 'freight-text-pro', serif; }
+
+.content_en, .content_es {
+  display: none; }
+
+header {
+  font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #fff;
+  column-count: 3;
+  padding: 10px 20px; }
+  header nav {
+    padding-top: 2px; }
+    header nav ul li {
+      display: inline-block;
+      margin-right: 5px; }
+  header #book_title {
+    text-align: center;
+    padding-top: 2px;
+    font-weight: bold; }
+  header #lang_switcher {
+    text-align: right; }
+    header #lang_switcher li {
+      display: inline-block;
+      margin-left: 5px; }
+      header #lang_switcher li.active {
+        background: #215EA6;
+        padding: 2px 5px 0;
+        border-radius: 5px; }
+
+.chapter {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 50px; }
+  .chapter h1 {
+    font: 38px/1em 'freight-display-pro', serif;
+    font-weight: 400;
+    text-align: center;
+    color: #215EA6;
+    margin-bottom: 30px; }
+  .chapter .by {
+    text-align: center;
+    margin-bottom: 30px; }
+  .chapter .about {
+    background: #215EA6;
+    padding: 10px;
+    color: #fff;
+    font-style: italic;
+    margin-bottom: 20px;
+    text-align: center; }
+
+footer {
+  text-align: center;
+  margin-top: 30px; }
+
+/*# sourceMappingURL=main.css.map */

@@ -17,4 +17,4 @@ xcuserdata
 .svn
 CVS
 
-render/**
+render/.sass-cache/*
