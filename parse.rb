@@ -133,6 +133,20 @@ def parse_sheet_data(data)
 		when 'twtattr'
 			html_open	= '<div class="tweet_meta">'
 			html_close	= '</div>'
+		when 'divider'
+			html_open	= '<div class="divider">'
+			html_close	= '</div>'
+		when 'list'
+			if data[row_index-1] && data[row_index-1][:type].downcase == 'list'
+				html_open = '<li>'
+			else
+				html_open = '<ol><li>'
+			end
+			if data[row_index+1] && data[row_index+1][:type].downcase == 'list'
+				html_close = '</li>'
+			else
+				html_close = '</li></ol>'
+			end
 		end
 
 		original_html = html_open + format_text(row[:original]) + html_close

@@ -83,6 +83,7 @@ header {
 	position: relative;
 
 	@media(min-width: $break1) {
+		-moz-column-count: 3;
 		column-count: 3;
 		position: fixed;
 		width: 100%;
@@ -175,7 +176,7 @@ header {
 	}
 
 	#toc {
-		// display: none;
+		display: none;
 		padding-bottom: 6px;
 		border-bottom: 1px solid #ccc;
 		margin-bottom: 8px;
@@ -247,6 +248,12 @@ header {
 		padding: 90px 0 0;
 	}
 
+	.date {
+		text-align: center;
+		color: #777;
+		margin-bottom: 10px;
+	}
+
 	h1 {
 		font: 38px/1em 'freight-display-pro', serif;
 		font-weight: 400;
@@ -255,9 +262,19 @@ header {
 		margin-bottom: 30px;
 	}
 
+	h2 {
+		font: 30px/1em 'freight-display-pro', serif;
+		font-weight: 400;
+		font-style: italic;
+		text-align: center;
+		color: $pcblue;
+		margin-top: -25px;
+		margin-bottom: 30px;
+	}
+
 	.by {
 		text-align: center;
-		margin-bottom: 30px;
+		margin-bottom: 50px;
 	}
 
 	.about {
@@ -267,6 +284,55 @@ header {
 		font-style: italic;
 		margin-bottom: 20px;
 		text-align: center;
+	}
+
+	h3 {
+		font-weight: bold;
+		font-size: 1.1em;
+		line-height: 1em;
+		margin-top: 1.5em;
+	}
+
+	.sub_by {
+		font-style: italic;
+		margin-bottom: 0.5em;
+	}
+
+	h4 {
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 0.9em;
+	}
+
+	p {
+		margin-bottom: 1em;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	em {
+		font-style: italic;
+	}
+
+	strong {
+		font-weight: bold;
+	}
+
+	.divider {
+		visibility: hidden;
+		&:after {
+			visibility: visible;
+			content: "";
+			display: block;
+			border-top: 3px double #333;
+			width: 80%;
+			margin: 0 auto 2.25em;
+		}
+	}
+
+	ol {
+		list-style-type: decimal;
 	}
 }
 
