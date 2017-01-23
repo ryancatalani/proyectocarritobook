@@ -44,6 +44,10 @@ $(function() {
 		tocOpen = false;
 	});
 
+	$(window).resize(function(){
+		setTOCheight();
+	});
+
 
 	// === Functions ===
 
@@ -68,7 +72,15 @@ $(function() {
 		return $('.content_' + lang);
 	}
 
+	function setTOCheight() {
+		if ($(window).width() >= 600) {
+			$('header #toc').css('max-height', $(window).height()-44);	
+		}
+	}
+
 	function setupTOC() {
+		setTOCheight();
+
 		$.getJSON('/contents.json', function(data) {
 			for (var i = 0; i < data.length; i++) {
 				var secObj = data[i];

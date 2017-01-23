@@ -26,7 +26,7 @@ def get_all_sheets(spreadsheet_key)
 	end
 
 	toc = []
-	sheets.first(5).each do |sheet|
+	sheets.each do |sheet|
 		chapter_data = get_sheet_data(sheet[:csv_url])
 
 		title = chapter_data[:title]

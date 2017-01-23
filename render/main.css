@@ -152,7 +152,8 @@ header {
         left: 0;
         top: 34px;
         background: #000;
-        padding: 10px 20px; } }
+        padding: 10px 20px;
+        overflow-y: scroll; } }
     header #toc #toc_close {
       position: absolute;
       right: 10px;
@@ -226,22 +227,27 @@ header {
     font-weight: bold;
     font-size: 1.1em;
     line-height: 1em;
-    margin-top: 1.5em; }
+    margin-top: 1.5em;
+    margin-bottom: 0.5em; }
   .chapter .sub_by {
     font-style: italic;
+    margin-top: -0.5em;
     margin-bottom: 0.5em; }
   .chapter h4 {
     font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9em; }
+    font-variant: small-caps; }
   .chapter p {
     margin-bottom: 1em; }
     .chapter p:last-child {
       margin-bottom: 0; }
+  .chapter p.indent {
+    margin-left: 2em; }
   .chapter em {
     font-style: italic; }
   .chapter strong {
     font-weight: bold; }
+  .chapter .smallcaps {
+    font-variant: small-caps; }
   .chapter .divider {
     visibility: hidden; }
     .chapter .divider:after {
@@ -252,7 +258,16 @@ header {
       width: 80%;
       margin: 0 auto 2.25em; }
   .chapter ol {
-    list-style-type: decimal; }
+    list-style-type: decimal;
+    margin-bottom: 1em; }
+    .chapter ol li {
+      margin-bottom: 0.3em; }
+  .chapter blockquote {
+    margin: 0 2em;
+    font-style: italic;
+    margin-bottom: 1em; }
+  .chapter .blockquote_by {
+    margin: -0.5em 2em 1em; }
 
 footer {
   text-align: center;

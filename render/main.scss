@@ -191,6 +191,7 @@ header {
 			top: 34px;
 			background: #000;
 			padding: 10px 20px;
+			overflow-y: scroll;
 		}
 		#toc_close {
 			position: absolute;
@@ -291,17 +292,18 @@ header {
 		font-size: 1.1em;
 		line-height: 1em;
 		margin-top: 1.5em;
+		margin-bottom: 0.5em;
 	}
 
 	.sub_by {
 		font-style: italic;
+		margin-top: -0.5em;
 		margin-bottom: 0.5em;
 	}
 
 	h4 {
 		font-weight: bold;
-		text-transform: uppercase;
-		font-size: 0.9em;
+		font-variant: small-caps;
 	}
 
 	p {
@@ -311,12 +313,20 @@ header {
 		}
 	}
 
+	p.indent {
+		margin-left: 2em;
+	}
+
 	em {
 		font-style: italic;
 	}
 
 	strong {
 		font-weight: bold;
+	}
+
+	.smallcaps {
+		font-variant: small-caps;
 	}
 
 	.divider {
@@ -333,6 +343,20 @@ header {
 
 	ol {
 		list-style-type: decimal;
+		margin-bottom: 1em;
+		li {
+			margin-bottom: 0.3em;
+		}
+	}
+
+	blockquote {
+		margin: 0 2em;
+		font-style: italic;
+		margin-bottom: 1em;
+	}
+
+	.blockquote_by {
+		margin: -0.5em 2em 1em;
 	}
 }
 
