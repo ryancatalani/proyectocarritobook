@@ -137,17 +137,38 @@ header {
           cursor: default;
           text-decoration: none; }
   header #toc {
-    display: none;
     padding-bottom: 6px;
     border-bottom: 1px solid #ccc;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+    position: relative; }
     @media (min-width: 768px) {
       header #toc {
         text-align: left;
-        padding-top: 2px;
-        padding-bottom: 0;
         border-bottom: none;
-        margin-bottom: 0; } }
+        margin-bottom: 0;
+        position: absolute;
+        left: 0;
+        top: 34px;
+        background: #000;
+        padding: 10px 20px; } }
+    header #toc #toc_close {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 18px; }
+      @media (min-width: 768px) {
+        header #toc #toc_close {
+          top: 15px; } }
+      header #toc #toc_close:hover {
+        background: #FFE500;
+        border-color: #FFE500;
+        color: #000;
+        cursor: pointer; }
     header #toc .toc_section {
       margin-bottom: 10px; }
       header #toc .toc_section:last-child {
@@ -163,13 +184,6 @@ header {
       color: #fff;
       cursor: default;
       text-decoration: none; }
-    @media (min-width: 768px) {
-      header #toc {
-        position: absolute;
-        left: 0;
-        top: 34px;
-        background: #000;
-        padding: 10px 20px; } }
 
 .chapter {
   max-width: 600px;

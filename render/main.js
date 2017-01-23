@@ -38,6 +38,12 @@ $(function() {
 		return false;
 	});
 
+	$('#toc_close').click(function() {
+		$('#toc').hide();
+		$('#toc_button').removeClass('active');
+		tocOpen = false;
+	});
+
 
 	// === Functions ===
 
@@ -99,6 +105,6 @@ $(function() {
 			};
 
 			$('header #toc').find('.content_' + globalLang).show();
-		})
+		});
 	}
-})
+});
