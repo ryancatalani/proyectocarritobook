@@ -20,7 +20,7 @@ def get_all_sheets(spreadsheet_key)
 	end
 
 	toc = []
-	sheets.first(1).each do |sheet|
+	sheets.first(5).each do |sheet|
 		chapter_data = get_sheet_data(sheet[:csv_url])
 
 		title = chapter_data[:title]
@@ -35,6 +35,7 @@ def get_all_sheets(spreadsheet_key)
 		toc << contents_entry
 	end
 	puts toc
+	render_contents_json(toc)
 end
 
 def get_sheet_data(sheet_csv_url)
@@ -166,6 +167,13 @@ def render_chapter(chapter_data, slug)
 	html = template.render(self, chapter_data: chapter_data)
 	File.write(fname, html)
 	puts "#{slug} done"
+end
+
+def render_contents_json(contents)
+	fname = "render/contents.json"
+	fdata = contents.to_json
+	File.write(fname, fdata)
+	puts "contents json done"
 end
 
 get_all_sheets('1x3mZhY0j5wXUnAnVwumKk5bSuqh2Xx6_9Srt0jbMVpE')

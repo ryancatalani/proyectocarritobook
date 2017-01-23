@@ -67,10 +67,13 @@ header {
   font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   background: #000;
   color: #fff;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  position: relative; }
   @media (min-width: 768px) {
     header {
-      column-count: 3; } }
+      column-count: 3;
+      position: fixed;
+      width: 100%; } }
   header nav {
     text-align: center;
     padding-top: 0;
@@ -125,6 +128,27 @@ header {
         header #lang_switcher li.active:hover {
           color: #fff;
           cursor: default; }
+  header #toc a:link, header #toc a:visited {
+    color: #fff;
+    text-decoration: none; }
+  header #toc a:hover, header #toc a:active {
+    color: #FFE500;
+    background: none; }
+  header #toc li.active a:link, header #toc li.active a:visited {
+    background: #215EA6;
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin-left: -5px; }
+  header #toc li.active a:hover, header #toc li.active a:active {
+    color: #fff;
+    cursor: default; }
+  @media (min-width: 768px) {
+    header #toc {
+      position: absolute;
+      left: 0;
+      top: 34px;
+      background: #000;
+      padding: 10px 20px; } }
 
 .chapter {
   max-width: 600px;
@@ -132,7 +156,7 @@ header {
   padding: 50px 5% 0; }
   @media (min-width: 768px) {
     .chapter {
-      padding: 50px 0 0; } }
+      padding: 90px 0 0; } }
   .chapter h1 {
     font: 38px/1em 'freight-display-pro', serif;
     font-weight: 400;
