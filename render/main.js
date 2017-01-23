@@ -12,6 +12,7 @@ $(function() {
 
 	setupTOC();
 
+	var tocOpen = false;
 
 	// === Actions ===
 	
@@ -22,6 +23,20 @@ $(function() {
 		setLang(newLang);
 	});
 
+	$('#toc_button').click(function(e) {
+		e.preventDefault();
+		$toc = $('#toc');
+		if (tocOpen) {
+			$toc.hide();
+			$(this).removeClass('active');
+		} else {
+			$toc.show();
+			$(this).addClass('active');
+		}
+
+		tocOpen = !tocOpen;
+		return false;
+	});
 
 
 	// === Functions ===

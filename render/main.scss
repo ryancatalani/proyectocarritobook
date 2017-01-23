@@ -88,6 +88,18 @@ header {
 		width: 100%;
 	}
 
+	a {
+		&:link, &:visited {
+			color: #fff;
+			text-decoration: none;
+		}
+		&:hover, &:active {
+			color: $pcyellow;
+			text-decoration: underline;
+			background: none;
+		}
+	}
+
 	nav {
 		text-align: center;
 		padding-top: 0;
@@ -105,16 +117,13 @@ header {
 			li {
 				display: inline-block;
 				margin-right: 5px;
-				a {
-					&:link, &:visited {
-						color: #fff;
-						text-decoration: none;
-					}
-					&:hover, &:active {
-						color: $pcyellow;
-						cursor: pointer;
-					}
-				}
+			}
+		}
+		#toc_button.active {
+			border-bottom: 1px solid #fff;
+			&:hover, &:active {
+				border-bottom: none;
+				text-decoration: none;
 			}
 		}
 	}
@@ -147,9 +156,10 @@ header {
 		li {
 			display: inline-block;
 			margin-left: 5px;
-			&:hover {
+			&.lang:hover {
 				color: $pcyellow;
 				cursor: pointer;
+				text-decoration: underline;
 			}
 			&.active {
 				background: $pcblue;
@@ -158,12 +168,26 @@ header {
 				&:hover {
 					color: #fff;
 					cursor: default;
+					text-decoration: none;
 				}
 			}
 		}
 	}
 
 	#toc {
+		display: none;
+		padding-bottom: 6px;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 8px;
+
+		@media(min-width: $break1) {
+			text-align: left;
+			padding-top: 2px;
+			padding-bottom: 0;
+			border-bottom: none;
+			margin-bottom: 0;
+		}
+
 		.toc_section {
 			margin-bottom: 10px;
 			&:last-child {
@@ -172,16 +196,6 @@ header {
 		}
 		.section_title {
 			font-weight: bold;
-		}
-		a {
-			&:link, &:visited {
-				color: #fff;
-				text-decoration: none;
-			}
-			&:hover, &:active {
-				color: $pcyellow;
-				background: none;
-			}
 		}
 		li.active {
 			a {
@@ -194,6 +208,7 @@ header {
 				&:hover, &:active {
 					color: #fff;
 					cursor: default;
+					text-decoration: none;
 				}
 			}	
 		}

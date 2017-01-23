@@ -74,6 +74,13 @@ header {
       column-count: 3;
       position: fixed;
       width: 100%; } }
+  header a:link, header a:visited {
+    color: #fff;
+    text-decoration: none; }
+  header a:hover, header a:active {
+    color: #FFE500;
+    text-decoration: underline;
+    background: none; }
   header nav {
     text-align: center;
     padding-top: 0;
@@ -90,12 +97,11 @@ header {
     header nav ul li {
       display: inline-block;
       margin-right: 5px; }
-      header nav ul li a:link, header nav ul li a:visited {
-        color: #fff;
+    header nav #toc_button.active {
+      border-bottom: 1px solid #fff; }
+      header nav #toc_button.active:hover, header nav #toc_button.active:active {
+        border-bottom: none;
         text-decoration: none; }
-      header nav ul li a:hover, header nav ul li a:active {
-        color: #FFE500;
-        cursor: pointer; }
   header #book_title_small, header #book_title {
     font-weight: bold;
     text-align: center; }
@@ -118,43 +124,52 @@ header {
     header #lang_switcher li {
       display: inline-block;
       margin-left: 5px; }
-      header #lang_switcher li:hover {
+      header #lang_switcher li.lang:hover {
         color: #FFE500;
-        cursor: pointer; }
+        cursor: pointer;
+        text-decoration: underline; }
       header #lang_switcher li.active {
         background: #215EA6;
         padding: 2px 5px 0;
         border-radius: 5px; }
         header #lang_switcher li.active:hover {
           color: #fff;
-          cursor: default; }
-  header #toc .toc_section {
-    margin-bottom: 10px; }
-    header #toc .toc_section:last-child {
-      margin-bottom: 0; }
-  header #toc .section_title {
-    font-weight: bold; }
-  header #toc a:link, header #toc a:visited {
-    color: #fff;
-    text-decoration: none; }
-  header #toc a:hover, header #toc a:active {
-    color: #FFE500;
-    background: none; }
-  header #toc li.active a:link, header #toc li.active a:visited {
-    background: #215EA6;
-    padding: 2px 5px;
-    border-radius: 5px;
-    margin-left: -5px; }
-  header #toc li.active a:hover, header #toc li.active a:active {
-    color: #fff;
-    cursor: default; }
-  @media (min-width: 768px) {
-    header #toc {
-      position: absolute;
-      left: 0;
-      top: 34px;
-      background: #000;
-      padding: 10px 20px; } }
+          cursor: default;
+          text-decoration: none; }
+  header #toc {
+    display: none;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8px; }
+    @media (min-width: 768px) {
+      header #toc {
+        text-align: left;
+        padding-top: 2px;
+        padding-bottom: 0;
+        border-bottom: none;
+        margin-bottom: 0; } }
+    header #toc .toc_section {
+      margin-bottom: 10px; }
+      header #toc .toc_section:last-child {
+        margin-bottom: 0; }
+    header #toc .section_title {
+      font-weight: bold; }
+    header #toc li.active a:link, header #toc li.active a:visited {
+      background: #215EA6;
+      padding: 2px 5px;
+      border-radius: 5px;
+      margin-left: -5px; }
+    header #toc li.active a:hover, header #toc li.active a:active {
+      color: #fff;
+      cursor: default;
+      text-decoration: none; }
+    @media (min-width: 768px) {
+      header #toc {
+        position: absolute;
+        left: 0;
+        top: 34px;
+        background: #000;
+        padding: 10px 20px; } }
 
 .chapter {
   max-width: 600px;
