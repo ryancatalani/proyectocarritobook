@@ -15,14 +15,18 @@
 
 	<%= Tilt.new('templates/header.html.erb').render %>
 	
-	<div class="chapter">
-		<div id="chapter_or" class="content_or">
+	<div id="chapter_or" class="content_or">
+		<div class="chapter">
 			<%= chapter_data[:html][:original] %>
 		</div>
-		<div id="chapter_en" class="content_en">
+	</div>
+	<div id="chapter_en" class="content_en">
+		<div class="chapter">
 			<%= chapter_data[:html][:english] %>
 		</div>
-		<div id="chapter_es" class="content_es">
+	</div>
+	<div id="chapter_es" class="content_es">
+		<div class="chapter">
 			<%= chapter_data[:html][:spanish] %>
 		</div>
 	</div>

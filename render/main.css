@@ -192,14 +192,20 @@ header {
       cursor: default;
       text-decoration: none; }
 
+#chapter_or, #chapter_en, #chapter_es {
+  min-height: 100%; }
+
 .chapter {
   max-width: 600px;
   margin: 0 auto;
-  padding: 50px 5% 0;
-  min-height: 100%; }
+  padding: 30px 5% 0; }
+  .chapter:first-child {
+    padding-top: 50px; }
   @media (min-width: 768px) {
     .chapter {
-      padding: 90px 0 0; } }
+      padding: 30px 0 0; }
+      .chapter:first-child {
+        padding-top: 90px; } }
   .chapter .date {
     text-align: center;
     color: #777;
@@ -274,9 +280,32 @@ header {
   .chapter .blockquote_by {
     margin: -0.5em 2em 1em; }
 
+.header_img {
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-position: center; }
+  @media (min-width: 768px) {
+    .header_img {
+      height: 500px; } }
+
+.header_img_caption {
+  color: #333;
+  font-style: italic;
+  text-align: right;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px; }
+
 .previous_next {
   max-width: 600px;
-  margin: 50px auto; }
+  margin: 50px auto;
+  padding: 0 5%; }
+  @media (min-width: 768px) {
+    .previous_next {
+      padding: 0; } }
   .previous_next:after {
     visibility: hidden;
     display: block;

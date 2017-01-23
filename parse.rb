@@ -26,7 +26,7 @@ def get_all_sheets(spreadsheet_key)
 	end
 
 	toc = []
-	sheets.each do |sheet|
+	sheets.first(5).each do |sheet|
 		chapter_data = get_sheet_data(sheet[:csv_url])
 
 		title = chapter_data[:title]
@@ -147,6 +147,16 @@ def parse_sheet_data(data)
 			else
 				html_close = '</li></ol>'
 			end
+		when 'headerimg'
+			html_open	= '</div><div class="header_img" style="background-image:url('
+			if data[row_index+1] && data[row_index+1][:type].downcase == 'headerimgcaption'
+				html_close	= ')"></div>'
+			else
+				html_close	= ')"></div><div class="chapter">'
+			end
+		when 'headerimgcaption'
+			html_open	= '<div class="header_img_caption">'
+			html_close	= '</div><div class="chapter">'
 		end
 
 		original_html = html_open + format_text(row[:original]) + html_close
@@ -169,6 +179,8 @@ def parse_sheet_data(data)
 end
 
 def format_text(text)
+	return text if text.start_with?('http://')
+
 	ital = /(\*(.+?)\*)/			# *text*
 	bold = /(\*\*(.+?)\*\*)/		# **text**
 	smallcaps = /(\^\^(.+?)\^\^)/	# ^^text^^

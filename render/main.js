@@ -11,6 +11,7 @@ $(function() {
 	setLang(globalLang);
 
 	setupTOC();
+	setHeaderImgHeight();
 
 	var tocOpen = false;
 
@@ -46,6 +47,7 @@ $(function() {
 
 	$(window).resize(function(){
 		setTOCheight();
+		setHeaderImgHeight();
 	});
 
 
@@ -74,6 +76,16 @@ $(function() {
 	function setTOCheight() {
 		if ($(window).width() >= 600) {
 			$('header #toc').css('max-height', $(window).height()-44);	
+		} else {
+			$('header #toc').css('max-height', '');
+		}
+	}
+
+	function setHeaderImgHeight() {
+		if ($(window).width() >= 600) {
+			$('.header_img').css('height', $(window).height()*0.9);
+		} else {
+			$('.header_img').css('height', '');
 		}
 	}
 
@@ -155,14 +167,16 @@ $(function() {
 	}
 
 	function setupPrevNextLink(el, chapter) {
-		var $link = $(el).find('a');
-		$link.find('.content_or').text(chapter.title_or);
-		$link.find('.content_en').text(chapter.title_en);
-		$link.find('.content_es').text(chapter.title_es);
+		if (chapter !== undefined) {
+			var $link = $(el).find('a');
+			$link.find('.content_or').text(chapter.title_or);
+			$link.find('.content_en').text(chapter.title_en);
+			$link.find('.content_es').text(chapter.title_es);
 
-		var href = '/chapters/' + chapter.slug + '.html';
-		$link.attr('href', href);
+			var href = '/chapters/' + chapter.slug + '.html';
+			$link.attr('href', href);
 
-		$(el).show();
+			$(el).show();
+		}
 	}
 });
