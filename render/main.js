@@ -52,7 +52,6 @@ $(function() {
 	// === Functions ===
 
 	function setLang(newLang) {
-		// var currentLang = globalLang;
 		var windowPosition = $(window).scrollTop();
 
 		langContents('or').hide();
@@ -60,7 +59,7 @@ $(function() {
 		langContents('es').hide();
 
 		langContents(newLang).show();
-		$(window).scrollTop(windowPosition);
+		// $(window).scrollTop(windowPosition);
 
 		$('#lang_switcher').find('.active').removeClass('active');
 		$('.lang[data-lang="' + newLang + '"]').addClass('active');
@@ -103,6 +102,29 @@ $(function() {
 						html += '<li>';
 					} else {
 						html += '<li class="active">';
+
+						if (i == 0 && j == 0) {
+							// beginning of book
+							setupPrevLink('none');
+						} else if (i > 0 && j == 0) {
+							// beginning of section
+							var prevIndex = data[i-1].contents.length-1;
+							setupPrevLink(data[i-1].contents[prevIndex]);
+						} else {
+							// middle of section
+							setupPrevLink(chapterData[j-1]);
+						}
+
+						if (i == data.length-1 && j == chapterData.length-1) {
+							// end of book
+							setupNextLink('none');
+						} else if (i < data.length-1 && j == chapterData.length-1) {
+							// end of section
+							setupNextLink(data[i+1].contents[0]);
+						} else {
+							// middle of section
+							setupNextLink(chapterData[j+1]);
+						}
 					}
 
 					html += '<a href="/chapters/' + tocObj.slug + '.html">';
@@ -118,5 +140,29 @@ $(function() {
 
 			$('header #toc').find('.content_' + globalLang).show();
 		});
+	}
+
+	function setupPrevLink(chapter) {
+		if (chapter !== 'none') {
+			setupPrevNextLink('#prev_link', chapter);
+		}
+	}
+
+	function setupNextLink(chapter) {
+		if (chapter !== 'none') {
+			setupPrevNextLink('#next_link', chapter);
+		}
+	}
+
+	function setupPrevNextLink(el, chapter) {
+		var $link = $(el).find('a');
+		$link.find('.content_or').text(chapter.title_or);
+		$link.find('.content_en').text(chapter.title_en);
+		$link.find('.content_es').text(chapter.title_es);
+
+		var href = '/chapters/' + chapter.slug + '.html';
+		$link.attr('href', href);
+
+		$(el).show();
 	}
 });
