@@ -1,3 +1,5 @@
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -51,6 +53,8 @@ table {
 // Proyecto Carrito
 
 $pcblue: #215EA6;
+$pcyellow: #FFE500;
+$break1: 768px;
 
 body {
 	font: 16px/1.4em 'freight-text-pro', serif;
@@ -60,47 +64,111 @@ body {
 	display: none;
 }
 
+a {
+	&:link, &:visited {
+		color: $pcblue;
+	}
+	&:hover, &:active {
+		background: $pcyellow;
+		text-decoration: none;
+		color: #000;
+	}
+}
+
 header {
 	font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	background: #000;
 	color: #fff;
-	column-count: 3;
 	padding: 10px 20px;
 
+	@media(min-width: $break1) {
+		column-count: 3;
+	}
+
 	nav {
-		padding-top: 2px;
+		text-align: center;
+		padding-top: 0;
+		padding-bottom: 6px;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 8px;
+		@media(min-width: $break1) {
+			text-align: left;
+			padding-top: 2px;
+			padding-bottom: 0;
+			border-bottom: none;
+			margin-bottom: 0;
+		}
 		ul {
 			li {
 				display: inline-block;
 				margin-right: 5px;
+				a {
+					&:link, &:visited {
+						color: #fff;
+						text-decoration: none;
+					}
+					&:hover, &:active {
+						color: $pcyellow;
+						cursor: pointer;
+					}
+				}
 			}
 		}
 	}
 
-	#book_title {
-		text-align: center;
-		padding-top: 2px;
+	#book_title_small, #book_title {
 		font-weight: bold;
+		text-align: center;
+	}
+
+	#book_title_small {
+		display: block;
+		@media(min-width: $break1) {
+			display: none;
+		}
+	}
+
+	#book_title {
+		padding-top: 2px;
+		display: none;
+		@media(min-width: $break1) {
+			display: block;
+		}
 	}
 
 	#lang_switcher {
-		text-align: right;
+		text-align: center;
+		@media(min-width: $break1) {
+			text-align: right;
+		}
 		li {
 			display: inline-block;
 			margin-left: 5px;
+			&:hover {
+				color: $pcyellow;
+				cursor: pointer;
+			}
 			&.active {
 				background: $pcblue;
 				padding: 2px 5px 0;
 				border-radius: 5px;
+				&:hover {
+					color: #fff;
+					cursor: default;
+				}
 			}
 		}
 	}
 }
 
 .chapter {
-	max-width: 500px;
+	max-width: 600px;
 	margin: 0 auto;
-	padding-top: 50px;
+	padding: 50px 5% 0;
+
+	@media(min-width: $break1) {
+		padding: 50px 0 0;
+	}
 
 	h1 {
 		font: 38px/1em 'freight-display-pro', serif;

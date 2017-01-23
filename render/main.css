@@ -1,3 +1,8 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -51,35 +56,83 @@ body {
 .content_en, .content_es {
   display: none; }
 
+a:link, a:visited {
+  color: #215EA6; }
+a:hover, a:active {
+  background: #FFE500;
+  text-decoration: none;
+  color: #000; }
+
 header {
   font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   background: #000;
   color: #fff;
-  column-count: 3;
   padding: 10px 20px; }
+  @media (min-width: 768px) {
+    header {
+      column-count: 3; } }
   header nav {
-    padding-top: 2px; }
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8px; }
+    @media (min-width: 768px) {
+      header nav {
+        text-align: left;
+        padding-top: 2px;
+        padding-bottom: 0;
+        border-bottom: none;
+        margin-bottom: 0; } }
     header nav ul li {
       display: inline-block;
       margin-right: 5px; }
+      header nav ul li a:link, header nav ul li a:visited {
+        color: #fff;
+        text-decoration: none; }
+      header nav ul li a:hover, header nav ul li a:active {
+        color: #FFE500;
+        cursor: pointer; }
+  header #book_title_small, header #book_title {
+    font-weight: bold;
+    text-align: center; }
+  header #book_title_small {
+    display: block; }
+    @media (min-width: 768px) {
+      header #book_title_small {
+        display: none; } }
   header #book_title {
-    text-align: center;
     padding-top: 2px;
-    font-weight: bold; }
+    display: none; }
+    @media (min-width: 768px) {
+      header #book_title {
+        display: block; } }
   header #lang_switcher {
-    text-align: right; }
+    text-align: center; }
+    @media (min-width: 768px) {
+      header #lang_switcher {
+        text-align: right; } }
     header #lang_switcher li {
       display: inline-block;
       margin-left: 5px; }
+      header #lang_switcher li:hover {
+        color: #FFE500;
+        cursor: pointer; }
       header #lang_switcher li.active {
         background: #215EA6;
         padding: 2px 5px 0;
         border-radius: 5px; }
+        header #lang_switcher li.active:hover {
+          color: #fff;
+          cursor: default; }
 
 .chapter {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
-  padding-top: 50px; }
+  padding: 50px 5% 0; }
+  @media (min-width: 768px) {
+    .chapter {
+      padding: 50px 0 0; } }
   .chapter h1 {
     font: 38px/1em 'freight-display-pro', serif;
     font-weight: 400;
