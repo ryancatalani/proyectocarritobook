@@ -164,6 +164,15 @@ header {
 	}
 
 	#toc {
+		.toc_section {
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.section_title {
+			font-weight: bold;
+		}
 		a {
 			&:link, &:visited {
 				color: #fff;

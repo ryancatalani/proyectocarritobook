@@ -12,11 +12,17 @@ def get_all_sheets(spreadsheet_key)
 	json = JSON.parse(response)
 
 	sheets = []
+	meta_sheets = []
 	json['feed']['entry'].each do |entry|
 		sheet = {}
 		sheet[:slug] = entry['title']['$t']
 		sheet[:csv_url] = entry['link'].select {|l| l['type'] == 'text/csv'}.first['href']
-		sheets << sheet
+
+		if sheet[:slug].downcase[0,4] == "meta"
+			meta_sheets << sheet
+		else
+			sheets << sheet
+		end
 	end
 
 	toc = []
@@ -34,8 +40,9 @@ def get_all_sheets(spreadsheet_key)
 		contents_entry[:title_es] = title[:spanish]
 		toc << contents_entry
 	end
-	puts toc
-	render_contents_json(toc)
+	# puts toc
+	get_parse_meta(meta_sheets, toc)
+	# render_contents_json(toc)
 end
 
 def get_sheet_data(sheet_csv_url)
@@ -174,6 +181,39 @@ def render_contents_json(contents)
 	fdata = contents.to_json
 	File.write(fname, fdata)
 	puts "contents json done"
+end
+
+def get_parse_meta(meta_sheets, toc)
+	meta_sheets.each do |sheet|
+		open(sheet[:csv_url], 'r:utf-8') do |f|
+			data = SmarterCSV.process(f)
+
+			if sheet[:slug].downcase == "meta_toc"
+				final_toc = []
+				data.each do |toc_section_data|
+					section = {}
+					if !toc_section_data[:original].nil?
+						section[:title_or] = toc_section_data[:original]
+						section[:title_en] = toc_section_data[:english]
+						section[:title_es] = toc_section_data[:spanish]
+					else
+						section[:title_or] = section[:title_en] = section[:title_es] = ''
+					end
+					section[:contents] = []
+					toc_section_data[:section_contents].split(',').each do |section_index|
+						chapter = toc.select{|c| c[:slug].start_with?(section_index) }.first
+						if !chapter.nil?
+							section[:contents] << chapter
+						end
+					end
+					final_toc << section
+				end
+				render_contents_json(final_toc)
+			end
+
+		end
+	end
+
 end
 
 get_all_sheets('1x3mZhY0j5wXUnAnVwumKk5bSuqh2Xx6_9Srt0jbMVpE')

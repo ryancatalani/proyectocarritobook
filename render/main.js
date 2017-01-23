@@ -50,23 +50,39 @@ $(function() {
 	function setupTOC() {
 		$.getJSON('/contents.json', function(data) {
 			for (var i = 0; i < data.length; i++) {
-				var tocObj = data[i];
+				var secObj = data[i];
 
-				var html = '';
-				if (window.location.pathname.indexOf(tocObj.slug) === -1) {
-					html += '<li>';
-				} else {
-					html += '<li class="active">';
-				}
+				var html = '<li class="toc_section">';
+				if (secObj.title_or.length > 0) {
+					html += '<div class="section_title">';
+					html += '<span class="content_or" style="display:none">' + secObj.title_or + '</span>';
+					html += '<span class="content_en" style="display:none">' + secObj.title_en + '</span>';
+					html += '<span class="content_es" style="display:none">' + secObj.title_es + '</span>';	
+					html += '</div>';
+				}				
+				html += '<ol>';
 
-				html += '<a href="/chapters/' + tocObj.slug + '.html">';
-				html += '<span class="content_or" style="display:none">' + tocObj.title_or + '</span>';
-				html += '<span class="content_en" style="display:none">' + tocObj.title_en + '</span>';
-				html += '<span class="content_es" style="display:none">' + tocObj.title_es + '</span>';
-				html += '</a></li>';
+				var chapterData = secObj.contents;
+				for (var j = 0; j < chapterData.length; j++) {
+					var tocObj = chapterData[j];
 
+					if (window.location.pathname.indexOf(tocObj.slug) === -1) {
+						html += '<li>';
+					} else {
+						html += '<li class="active">';
+					}
+
+					html += '<a href="/chapters/' + tocObj.slug + '.html">';
+					html += '<span class="content_or" style="display:none">' + tocObj.title_or + '</span>';
+					html += '<span class="content_en" style="display:none">' + tocObj.title_en + '</span>';
+					html += '<span class="content_es" style="display:none">' + tocObj.title_es + '</span>';
+					html += '</a></li>';
+				};
+
+				html += '</ol></li>';
 				$('header #toc').append(html);
 			};
+
 			$('header #toc').find('.content_' + globalLang).show();
 		})
 	}
