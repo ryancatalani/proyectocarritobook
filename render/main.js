@@ -12,6 +12,7 @@ $(function() {
 
 	setupTOC();
 	setHeaderImgHeight();
+	getHiResImages();
 
 	var tocOpen = false;
 
@@ -177,6 +178,15 @@ $(function() {
 			$link.attr('href', href);
 
 			$(el).show();
+		}
+	}
+
+	function getHiResImages() {
+		if ($(window).width() >= 1000 || window.devicePixelRatio > 1) {
+			var imgUrlComp = $('.header_img').css('background-image').split('.');
+			imgUrlComp[imgUrlComp.length-2] += '@2x';
+			var imgUrl = imgUrlComp.join('.');
+			$('.header_img').css('background-image', imgUrl);
 		}
 	}
 });
