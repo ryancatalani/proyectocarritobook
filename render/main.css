@@ -324,6 +324,49 @@ header {
     border-bottom: 1px solid #333;
     margin-bottom: 5px; }
 
+a.fn:link, a.fn:visited {
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  background: #FFE500;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 16px;
+  display: inline-block;
+  color: #000;
+  text-decoration: none; }
+
+#footnote_box {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #FFE500;
+  padding: 1em 0; }
+  #footnote_box div {
+    max-width: 600px;
+    margin: 10px auto 0;
+    padding: 0 5%; }
+    @media (min-width: 768px) {
+      #footnote_box div {
+        padding: 0;
+        margin: 0 auto; } }
+  #footnote_box #fn_close {
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 16px; }
+    #footnote_box #fn_close:hover {
+      cursor: pointer;
+      background: #000;
+      color: #FFE500; }
+
 footer {
   font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   text-align: center;

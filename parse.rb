@@ -189,7 +189,7 @@ def format_text(text)
 	text.gsub!(ital, '<em>\2</em>')
 	text.gsub!(bold, '<strong>\2</em>')
 	text.gsub!(smallcaps, '<span class="smallcaps">\2</span>')
-	text.gsub!(fn, '<a href="#fn\2" class="fn">\2</a>')
+	text.gsub!(fn, '<a href="#fn\2" class="fn">+</a>')
 
 	return text
 end
@@ -207,6 +207,13 @@ def render_contents_json(contents)
 	fdata = contents.to_json
 	File.write(fname, fdata)
 	puts "contents json done"
+end
+
+def render_footnotes_json(footnotes)
+	fname = "render/footnotes.json"
+	fdata = footnotes.to_json
+	File.write(fname, fdata)
+	puts "footnotes json done"
 end
 
 def get_parse_meta(meta_sheets, toc)
@@ -235,6 +242,19 @@ def get_parse_meta(meta_sheets, toc)
 					final_toc << section
 				end
 				render_contents_json(final_toc)
+			end
+
+			if sheet[:slug].downcase == "meta_footnotes"
+				footnotes = {}
+				data.each do |fn_data|
+					footnote = {}
+					footnote[:original]	= fn_data[:original]
+					footnote[:english]	= fn_data[:english]
+					footnote[:spanish]	= fn_data[:spanish]
+					footnote_ref = "fn#{fn_data[:index]}"
+					footnotes[footnote_ref] = footnote
+				end
+				render_footnotes_json(footnotes)
 			end
 
 		end

@@ -14,6 +14,9 @@ $(function() {
 	setHeaderImgHeight();
 	getHiResImages();
 
+	var footnotes = {};
+	getFootnotes();
+
 	var tocOpen = false;
 
 	// === Actions ===
@@ -46,10 +49,27 @@ $(function() {
 		tocOpen = false;
 	});
 
+	$('.fn').click(function() {
+		var fnRef = $(this).attr('href').replace('#','');
+		var fn = footnotes[fnRef];
+
+		var $fnBox = $('#footnote_box');
+		$fnBox.find('.content_or').text(fn.original);
+		$fnBox.find('.content_en').text(fn.english);
+		$fnBox.find('.content_es').text(fn.spanish);
+
+		$fnBox.fadeIn('fast');
+	});	
+
+	$('#fn_close').click(function() {
+		$('#footnote_box').fadeOut('fast');
+	});
+
 	$(window).resize(function(){
 		setTOCheight();
 		setHeaderImgHeight();
 	});
+
 
 
 	// === Functions ===
@@ -189,4 +209,13 @@ $(function() {
 			$('.header_img').css('background-image', imgUrl);
 		}
 	}
+
+	function getFootnotes() {
+		if ( $('.fn').length > 0 ) {
+			$.getJSON('/footnotes.json', function(data) {
+				footnotes = data;
+			});
+		}
+	}
+
 });
