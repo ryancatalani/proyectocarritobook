@@ -160,6 +160,9 @@ def parse_sheet_data(data)
 		when 'embed'
 			html_open	= '<div class="embed">'
 			html_close	= '</div>'
+		when 'video'
+			html_open	= '<div class="video">'
+			html_close	= '</div>'
 		end
 
 		original_html = html_open + format_text(row[:original]) + html_close

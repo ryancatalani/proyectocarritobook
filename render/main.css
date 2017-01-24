@@ -285,6 +285,8 @@ header {
     background: #eee;
     padding: 1em;
     margin-bottom: 1em; }
+  .chapter .video {
+    margin-bottom: 1em; }
 
 .header_img {
   height: 200px;
