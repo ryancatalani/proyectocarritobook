@@ -157,6 +157,9 @@ def parse_sheet_data(data)
 		when 'headerimgcaption'
 			html_open	= '<div class="header_img_caption">'
 			html_close	= '</div><div class="chapter">'
+		when 'embed'
+			html_open	= '<div class="embed">'
+			html_close	= '</div>'
 		end
 
 		original_html = html_open + format_text(row[:original]) + html_close

@@ -49,16 +49,24 @@ $(function() {
 		tocOpen = false;
 	});
 
-	$('.fn').click(function() {
+	$('.fn').click(function(e) {
+		e.preventDefault();
+		var $fnBox = $('#footnote_box');
 		var fnRef = $(this).attr('href').replace('#','');
 		var fn = footnotes[fnRef];
 
-		var $fnBox = $('#footnote_box');
+		if ($fnBox.css('display') !== 'none' && $fnBox.find('.content_or').text() === fn.original) {
+			// if it's open on the same one, close it
+			$fnBox.fadeOut('fast');
+			return false;
+		}
+
 		$fnBox.find('.content_or').text(fn.original);
 		$fnBox.find('.content_en').text(fn.english);
 		$fnBox.find('.content_es').text(fn.spanish);
 
 		$fnBox.fadeIn('fast');
+		return false;
 	});	
 
 	$('#fn_close').click(function() {

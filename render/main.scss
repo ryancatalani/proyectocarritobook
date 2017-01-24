@@ -373,6 +373,16 @@ header {
 	.blockquote_by {
 		margin: -0.5em 2em 1em;
 	}
+
+	.tweet, .tweet_meta {
+		display: none;
+	}
+
+	.embed {
+		background: #eee;
+		padding: 1em;
+		margin-bottom: 1em;
+	}
 }
 
 .header_img {
@@ -429,7 +439,7 @@ header {
 
 a.fn {
 	&:link, &:visited {
-		font-weight: bold;
+		font-weight: normal;
 		width: 20px;
 		height: 20px;
 		background: $pcyellow;
@@ -439,6 +449,12 @@ a.fn {
 		display: inline-block;
 		color: #000;
 		text-decoration: none;
+		font-family: HelveticaNeue, Arial, Helvetica, sans-serif;
+		margin: 0 4px;
+	}
+	&:hover, &:active {
+		color: $pcyellow;
+		background: #000;
 	}
 }
 
@@ -449,6 +465,8 @@ a.fn {
 	width: 100%;
 	background: $pcyellow;
 	padding: 1em 0;
+	max-height: 100%;
+	overflow-y: scroll;
 	div {
 		max-width: 600px;
 		margin: 10px auto 0;

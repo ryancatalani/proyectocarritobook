@@ -279,6 +279,12 @@ header {
     margin-bottom: 1em; }
   .chapter .blockquote_by {
     margin: -0.5em 2em 1em; }
+  .chapter .tweet, .chapter .tweet_meta {
+    display: none; }
+  .chapter .embed {
+    background: #eee;
+    padding: 1em;
+    margin-bottom: 1em; }
 
 .header_img {
   height: 200px;
@@ -325,7 +331,7 @@ header {
     margin-bottom: 5px; }
 
 a.fn:link, a.fn:visited {
-  font-weight: bold;
+  font-weight: normal;
   width: 20px;
   height: 20px;
   background: #FFE500;
@@ -334,7 +340,12 @@ a.fn:link, a.fn:visited {
   line-height: 16px;
   display: inline-block;
   color: #000;
-  text-decoration: none; }
+  text-decoration: none;
+  font-family: HelveticaNeue, Arial, Helvetica, sans-serif;
+  margin: 0 4px; }
+a.fn:hover, a.fn:active {
+  color: #FFE500;
+  background: #000; }
 
 #footnote_box {
   display: none;
@@ -342,7 +353,9 @@ a.fn:link, a.fn:visited {
   bottom: 0;
   width: 100%;
   background: #FFE500;
-  padding: 1em 0; }
+  padding: 1em 0;
+  max-height: 100%;
+  overflow-y: scroll; }
   #footnote_box div {
     max-width: 600px;
     margin: 10px auto 0;
