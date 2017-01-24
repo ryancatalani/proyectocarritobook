@@ -246,6 +246,127 @@ body.inside {
 			}
 		}
 	}
+	footer {
+		a {
+			&:link, &:visited {
+				color: #fff;
+				text-decoration: underline;
+			}
+			&:hover, &:active {
+				color: $pcyellow;
+				background: none;
+			}
+		}
+	}
+	.header_img {
+		height: 200px;
+		@media(min-width: $break1) {
+			height: 500px;	
+		}
+		width: 100%;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.header_img_caption {
+		color: #333;
+		font-style: italic;
+		text-align: right;
+		font-size: 0.8em;
+		line-height: 1.2em;
+		margin-top: 10px;
+		margin-right: 20px;
+		margin-bottom: 10px;
+	}
+
+	.previous_next {
+		max-width: 600px;
+		margin: 50px auto;
+		padding: 0 5%;
+		@media(min-width: $break1) {
+			padding: 0;
+		}
+		&:after {
+			visibility: hidden;
+			display: block;
+			font-size: 0;
+			content: " ";
+			clear: both;
+			height: 0;
+		}
+		#prev_link, #next_link {
+			display: none;
+			width: 46%;
+			float: left;
+		}
+		#prev_link {
+			// text-align: right;
+			margin-right: 8%;
+		}
+		.desc {
+			font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+			border-bottom: 1px solid #333;
+			margin-bottom: 5px;
+		}
+	}
+
+	a.fn {
+		&:link, &:visited {
+			font-weight: normal;
+			width: 20px;
+			height: 20px;
+			background: $pcyellow;
+			border-radius: 10px;
+			text-align: center;
+			line-height: 16px;
+			display: inline-block;
+			color: #000;
+			text-decoration: none;
+			font-family: HelveticaNeue, Arial, Helvetica, sans-serif;
+			margin: 0 4px;
+		}
+		&:hover, &:active {
+			color: $pcyellow;
+			background: #000;
+		}
+	}
+
+	#footnote_box {
+		display: none;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		background: $pcyellow;
+		padding: 1em 0;
+		max-height: 100%;
+		overflow-y: scroll;
+		div {
+			max-width: 600px;
+			margin: 10px auto 0;
+			padding: 0 5%;
+			@media(min-width: $break1) {
+				padding: 0;
+				margin: 0 auto;
+			}
+		}
+		#fn_close {
+			position: absolute;
+			display: block;
+			top: 10px;
+			right: 10px;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #000;
+			border-radius: 10px;
+			text-align: center;
+			line-height: 16px;
+			&:hover {
+				cursor: pointer;
+				background: #000;
+				color: $pcyellow;
+			}
+		}
+	}
 }
 
 #chapter_or, #chapter_en, #chapter_es {
@@ -389,116 +510,6 @@ body.inside {
 
 	.video {
 		margin-bottom: 1em;
-	}
-}
-
-.header_img {
-	height: 200px;
-	@media(min-width: $break1) {
-		height: 500px;	
-	}
-	width: 100%;
-	background-size: cover;
-	background-position: center;
-}
-
-.header_img_caption {
-	color: #333;
-	font-style: italic;
-	text-align: right;
-	font-size: 0.8em;
-	line-height: 1.2em;
-	margin-top: 10px;
-	margin-right: 20px;
-	margin-bottom: 10px;
-}
-
-.previous_next {
-	max-width: 600px;
-	margin: 50px auto;
-	padding: 0 5%;
-	@media(min-width: $break1) {
-		padding: 0;
-	}
-	&:after {
-		visibility: hidden;
-		display: block;
-		font-size: 0;
-		content: " ";
-		clear: both;
-		height: 0;
-	}
-	#prev_link, #next_link {
-		display: none;
-		width: 46%;
-		float: left;
-	}
-	#prev_link {
-		// text-align: right;
-		margin-right: 8%;
-	}
-	.desc {
-		font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-		border-bottom: 1px solid #333;
-		margin-bottom: 5px;
-	}
-}
-
-a.fn {
-	&:link, &:visited {
-		font-weight: normal;
-		width: 20px;
-		height: 20px;
-		background: $pcyellow;
-		border-radius: 10px;
-		text-align: center;
-		line-height: 16px;
-		display: inline-block;
-		color: #000;
-		text-decoration: none;
-		font-family: HelveticaNeue, Arial, Helvetica, sans-serif;
-		margin: 0 4px;
-	}
-	&:hover, &:active {
-		color: $pcyellow;
-		background: #000;
-	}
-}
-
-#footnote_box {
-	display: none;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	background: $pcyellow;
-	padding: 1em 0;
-	max-height: 100%;
-	overflow-y: scroll;
-	div {
-		max-width: 600px;
-		margin: 10px auto 0;
-		padding: 0 5%;
-		@media(min-width: $break1) {
-			padding: 0;
-			margin: 0 auto;
-		}
-	}
-	#fn_close {
-		position: absolute;
-		display: block;
-		top: 10px;
-		right: 10px;
-		width: 20px;
-		height: 20px;
-		border: 1px solid #000;
-		border-radius: 10px;
-		text-align: center;
-		line-height: 16px;
-		&:hover {
-			cursor: pointer;
-			background: #000;
-			color: $pcyellow;
-		}
 	}
 }
 
