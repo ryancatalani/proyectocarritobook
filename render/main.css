@@ -60,95 +60,95 @@ body {
 .content_en, .content_es {
   display: none; }
 
-a:link, a:visited {
+body.inside a:link, body.inside a:visited {
   color: #215EA6; }
-a:hover, a:active {
+body.inside a:hover, body.inside a:active {
   background: #FFE500;
   text-decoration: none;
-  color: #000; }
-
-header {
+  color: #000;
+  cursor: pointer; }
+body.inside header {
   font: 17px/1.3em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   background: #000;
   color: #fff;
   padding: 10px 20px;
   position: relative; }
   @media (min-width: 768px) {
-    header {
+    body.inside header {
       -moz-column-count: 3;
       column-count: 3;
       position: fixed;
       width: 100%; } }
-  header a:link, header a:visited {
+  body.inside header a:link, body.inside header a:visited {
     color: #fff;
     text-decoration: none; }
-  header a:hover, header a:active {
+  body.inside header a:hover, body.inside header a:active {
     color: #FFE500;
     text-decoration: underline;
     background: none; }
-  header nav {
+  body.inside header nav {
     text-align: center;
     padding-top: 0;
     padding-bottom: 6px;
     border-bottom: 1px solid #ccc;
     margin-bottom: 8px; }
     @media (min-width: 768px) {
-      header nav {
+      body.inside header nav {
         text-align: left;
         padding-top: 2px;
         padding-bottom: 0;
         border-bottom: none;
         margin-bottom: 0; } }
-    header nav ul li {
+    body.inside header nav ul li {
       display: inline-block;
       margin-right: 5px; }
-    header nav #toc_button.active {
+    body.inside header nav #toc_button.active {
       border-bottom: 1px solid #fff; }
-      header nav #toc_button.active:hover, header nav #toc_button.active:active {
+      body.inside header nav #toc_button.active:hover, body.inside header nav #toc_button.active:active {
         border-bottom: none;
         text-decoration: none; }
-  header #book_title_small, header #book_title {
+  body.inside header #book_title_small, body.inside header #book_title {
     font-weight: bold;
     text-align: center; }
-  header #book_title_small {
+  body.inside header #book_title_small {
     display: block; }
     @media (min-width: 768px) {
-      header #book_title_small {
+      body.inside header #book_title_small {
         display: none; } }
-  header #book_title {
+  body.inside header #book_title {
     padding-top: 2px;
     display: none; }
     @media (min-width: 768px) {
-      header #book_title {
+      body.inside header #book_title {
         display: block; } }
-  header #lang_switcher {
+  body.inside header #lang_switcher {
     text-align: center; }
     @media (min-width: 768px) {
-      header #lang_switcher {
+      body.inside header #lang_switcher {
         text-align: right; } }
-    header #lang_switcher li {
+    body.inside header #lang_switcher li {
       display: inline-block;
       margin-left: 5px; }
-      header #lang_switcher li.lang:hover {
+      body.inside header #lang_switcher li.lang:hover {
         color: #FFE500;
         cursor: pointer;
         text-decoration: underline; }
-      header #lang_switcher li.active {
+      body.inside header #lang_switcher li.active {
         background: #215EA6;
         padding: 2px 5px 0;
         border-radius: 5px; }
-        header #lang_switcher li.active:hover {
+        body.inside header #lang_switcher li.active:hover {
           color: #fff;
           cursor: default;
           text-decoration: none; }
-  header #toc {
+  body.inside header #toc {
     display: none;
     padding-bottom: 6px;
     border-bottom: 1px solid #ccc;
     margin-bottom: 8px;
     position: relative; }
     @media (min-width: 768px) {
-      header #toc {
+      body.inside header #toc {
         text-align: left;
         border-bottom: none;
         margin-bottom: 0;
@@ -158,7 +158,7 @@ header {
         background: #000;
         padding: 10px 20px;
         overflow-y: scroll; } }
-    header #toc #toc_close {
+    body.inside header #toc #toc_close {
       position: absolute;
       right: 10px;
       top: 5px;
@@ -169,25 +169,25 @@ header {
       text-align: center;
       line-height: 18px; }
       @media (min-width: 768px) {
-        header #toc #toc_close {
+        body.inside header #toc #toc_close {
           top: 15px; } }
-      header #toc #toc_close:hover {
+      body.inside header #toc #toc_close:hover {
         background: #FFE500;
         border-color: #FFE500;
         color: #000;
         cursor: pointer; }
-    header #toc .toc_section {
+    body.inside header #toc .toc_section {
       margin-bottom: 10px; }
-      header #toc .toc_section:last-child {
+      body.inside header #toc .toc_section:last-child {
         margin-bottom: 0; }
-    header #toc .section_title {
+    body.inside header #toc .section_title {
       font-weight: bold; }
-    header #toc li.active a:link, header #toc li.active a:visited {
+    body.inside header #toc li.active a:link, body.inside header #toc li.active a:visited {
       background: #215EA6;
       padding: 2px 5px;
       border-radius: 5px;
       margin-left: -5px; }
-    header #toc li.active a:hover, header #toc li.active a:active {
+    body.inside header #toc li.active a:hover, body.inside header #toc li.active a:active {
       color: #fff;
       cursor: default;
       text-decoration: none; }
@@ -395,5 +395,213 @@ footer {
   footer a:hover, footer a:active {
     color: #FFE500;
     background: none; }
+
+body#home header {
+  background-color: #FFE500;
+  background-image: url("http://mobilitymovilidad.s3.amazonaws.com/proyectocarritobook/home_header.jpg");
+  background-position: center;
+  background-size: cover;
+  font-family: 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  min-height: 500px;
+  position: relative;
+  padding: 20px 5%; }
+  @media (min-width: 768px) {
+    body#home header {
+      padding: 0; } }
+  body#home header .quotes {
+    margin-bottom: 20px; }
+    body#home header .quotes:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0; }
+    body#home header .quotes .quote {
+      text-align: center;
+      margin-bottom: 1em; }
+      @media (min-width: 768px) {
+        body#home header .quotes .quote {
+          float: left;
+          width: 48%;
+          margin-top: 1.5em;
+          margin-bottom: 0; }
+          body#home header .quotes .quote:first-child {
+            text-align: left;
+            margin-left: 2%; }
+          body#home header .quotes .quote:last-child {
+            text-align: right;
+            margin-right: 2%; } }
+      body#home header .quotes .quote p {
+        font-size: 18px;
+        line-height: 1em;
+        font-weight: bold; }
+        @media (min-width: 768px) {
+          body#home header .quotes .quote p {
+            font-size: 23px; } }
+      body#home header .quotes .quote .quote_source {
+        font-size: 15px;
+        line-height: 1em; }
+        @media (min-width: 768px) {
+          body#home header .quotes .quote .quote_source {
+            font-size: 18px; } }
+  body#home header .titles {
+    width: 100%;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin: 40px 0;
+    padding: 40px 0; }
+    @media (min-width: 768px) {
+      body#home header .titles {
+        position: absolute;
+        top: 40%;
+        border: none;
+        margin: 0;
+        padding: 0; } }
+  body#home header h3 {
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1em;
+    margin-bottom: 5px; }
+    @media (min-width: 768px) {
+      body#home header h3 {
+        font-size: 27px;
+        margin-bottom: 20px; } }
+  body#home header h1 {
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; }
+    @media (min-width: 768px) {
+      body#home header h1 {
+        font-size: 70px;
+        font-weight: normal;
+        margin-bottom: 50px; } }
+  body#home header h2 {
+    font-size: 18px;
+    line-height: 1em;
+    font-weight: bold;
+    text-align: center; }
+    @media (min-width: 768px) {
+      body#home header h2 {
+        font-size: 27px; } }
+  body#home header .about {
+    font-size: 18px;
+    line-height: 1em;
+    text-align: center;
+    width: 100%; }
+    @media (min-width: 768px) {
+      body#home header .about {
+        position: absolute;
+        bottom: 30px; } }
+    body#home header .about p {
+      margin-bottom: 0.5em; }
+body#home .about_book {
+  width: 100%;
+  background: #215EA6;
+  color: #fff;
+  padding: 20px 0; }
+  body#home .about_book .wrap {
+    max-width: 750px;
+    margin: 0 5%; }
+    @media (min-width: 600px) {
+      body#home .about_book .wrap {
+        margin: 0 auto; } }
+  body#home .about_book .ctas {
+    font: 18px/1em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    margin-bottom: 20px; }
+    body#home .about_book .ctas:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0; }
+    body#home .about_book .ctas .cta:link, body#home .about_book .ctas .cta:visited {
+      display: block;
+      text-align: center;
+      width: 100%;
+      background: #FFE500;
+      border-radius: 5px;
+      color: #000;
+      text-decoration: none;
+      padding: 10px;
+      margin-bottom: 10px; }
+      @media (min-width: 768px) {
+        body#home .about_book .ctas .cta:link, body#home .about_book .ctas .cta:visited {
+          width: 49%;
+          margin-right: 2%;
+          margin-bottom: 0;
+          float: left; }
+          body#home .about_book .ctas .cta:link:last-child, body#home .about_book .ctas .cta:visited:last-child {
+            margin-right: 0; } }
+    body#home .about_book .ctas .cta:hover, body#home .about_book .ctas .cta:active {
+      background: #fff;
+      cursor: pointer; }
+  body#home .about_book .cols:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0; }
+  body#home .about_book .cols .col {
+    width: 100%;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 1em; }
+    body#home .about_book .cols .col:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+      margin-bottom: 0; }
+    @media (min-width: 750px) {
+      body#home .about_book .cols .col {
+        width: 31%;
+        float: left;
+        padding-bottom: 0;
+        border-bottom: none;
+        margin-bottom: 0; } }
+    @media (min-width: 750px) {
+      body#home .about_book .cols .col.textcol {
+        margin-right: 3.5%; } }
+    @media (min-width: 750px) {
+      body#home .about_book .cols .col#bookcover {
+        float: right; } }
+    body#home .about_book .cols .col p {
+      margin-bottom: 0.75em; }
+    body#home .about_book .cols .col a:link, body#home .about_book .cols .col a:visited {
+      color: #fff; }
+    body#home .about_book .cols .col a:hover, body#home .about_book .cols .col a:active {
+      background: #FFE500;
+      text-decoration: none;
+      color: #000;
+      cursor: pointer; }
+  body#home .about_book .cols img {
+    width: 100%; }
+body#home .signup {
+  padding: 30px 0;
+  text-align: center;
+  font-weight: bold; }
+  body#home .signup h4 {
+    font: 27px/1em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    margin-bottom: 20px; }
+  body#home .signup label, body#home .signup input {
+    font: 18px/1em 'mr-eaves-modern', 'Helvetica Neue', Arial, Helvetica, sans-serif; }
+  body#home .signup input {
+    padding: 5px 10px;
+    border: 1px solid #000;
+    border-radius: 5px; }
+  body#home .signup input[type=submit] {
+    background: #FFE500;
+    border: none;
+    margin-top: 10px; }
+    body#home .signup input[type=submit]:hover {
+      cursor: pointer;
+      background: #000;
+      color: #FFE500; }
+body#home footer {
+  background: #000; }
 
 /*# sourceMappingURL=main.css.map */
