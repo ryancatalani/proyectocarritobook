@@ -290,28 +290,28 @@ body.inside #footnote_box {
 #chapter_or, #chapter_en, #chapter_es {
   min-height: 100%; }
 
-.chapter {
+.chapter, .about {
   max-width: 600px;
   margin: 0 auto;
   padding: 30px 5% 0; }
-  .chapter:first-child {
+  .chapter:first-child, .about:first-child {
     padding-top: 50px; }
   @media (min-width: 768px) {
-    .chapter {
+    .chapter, .about {
       padding: 30px 0 0; }
-      .chapter:first-child {
+      .chapter:first-child, .about:first-child {
         padding-top: 90px; } }
-  .chapter .date {
+  .chapter .date, .about .date {
     text-align: center;
     color: #777;
     margin-bottom: 10px; }
-  .chapter h1 {
+  .chapter h1, .about h1 {
     font: 38px/1em 'freight-display-pro', serif;
     font-weight: 400;
     text-align: center;
     color: #215EA6;
     margin-bottom: 30px; }
-  .chapter h2 {
+  .chapter h2, .about h2 {
     font: 30px/1em 'freight-display-pro', serif;
     font-weight: 400;
     font-style: italic;
@@ -319,68 +319,68 @@ body.inside #footnote_box {
     color: #215EA6;
     margin-top: -25px;
     margin-bottom: 30px; }
-  .chapter .by {
+  .chapter .by, .about .by {
     text-align: center;
     margin-bottom: 50px; }
-  .chapter .about {
+  .chapter .about, .about .about {
     background: #215EA6;
     padding: 10px;
     color: #fff;
     font-style: italic;
     margin-bottom: 20px;
     text-align: center; }
-  .chapter h3 {
+  .chapter h3, .about h3 {
     font-weight: bold;
     font-size: 1.1em;
     line-height: 1em;
     margin-top: 1.5em;
     margin-bottom: 0.5em; }
-  .chapter .sub_by {
+  .chapter .sub_by, .about .sub_by {
     font-style: italic;
     margin-top: -0.5em;
     margin-bottom: 0.5em; }
-  .chapter h4 {
+  .chapter h4, .about h4 {
     font-weight: bold;
     font-variant: small-caps; }
-  .chapter p {
+  .chapter p, .about p {
     margin-bottom: 1em; }
-    .chapter p:last-child {
+    .chapter p:last-child, .about p:last-child {
       margin-bottom: 0; }
-  .chapter p.indent {
+  .chapter p.indent, .about p.indent {
     margin-left: 2em; }
-  .chapter em {
+  .chapter em, .about em {
     font-style: italic; }
-  .chapter strong {
+  .chapter strong, .about strong {
     font-weight: bold; }
-  .chapter .smallcaps {
+  .chapter .smallcaps, .about .smallcaps {
     font-variant: small-caps; }
-  .chapter .divider {
+  .chapter .divider, .about .divider {
     visibility: hidden; }
-    .chapter .divider:after {
+    .chapter .divider:after, .about .divider:after {
       visibility: visible;
       content: "";
       display: block;
       border-top: 3px double #333;
       width: 80%;
       margin: 0 auto 2.25em; }
-  .chapter ol {
+  .chapter ol, .about ol {
     list-style-type: decimal;
     margin-bottom: 1em; }
-    .chapter ol li {
+    .chapter ol li, .about ol li {
       margin-bottom: 0.3em; }
-  .chapter blockquote {
+  .chapter blockquote, .about blockquote {
     margin: 0 2em;
     font-style: italic;
     margin-bottom: 1em; }
-  .chapter .blockquote_by {
+  .chapter .blockquote_by, .about .blockquote_by {
     margin: -0.5em 2em 1em; }
-  .chapter .tweet, .chapter .tweet_meta {
+  .chapter .tweet, .about .tweet, .chapter .tweet_meta, .about .tweet_meta {
     display: none; }
-  .chapter .embed {
+  .chapter .embed, .about .embed {
     background: #eee;
     padding: 1em;
     margin-bottom: 1em; }
-  .chapter .video {
+  .chapter .video, .about .video {
     margin-bottom: 1em; }
 
 footer {
@@ -604,5 +604,11 @@ body#home .signup {
       color: #FFE500; }
 body#home footer {
   background: #000; }
+
+.about {
+  padding-top: 90px; }
+  .about h2 {
+    margin-top: 30px;
+    margin-bottom: 10px; }
 
 /*# sourceMappingURL=main.css.map */

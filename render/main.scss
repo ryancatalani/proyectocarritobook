@@ -794,3 +794,12 @@ body#home {
 		background: #000;
 	}
 }
+
+.about {
+	@extend .chapter;
+	padding-top: 90px;
+	h2 {
+		margin-top: 30px;
+		margin-bottom: 10px;
+	}
+}
