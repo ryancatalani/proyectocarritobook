@@ -63,6 +63,7 @@ def parse_sheet_data(data)
 	original = []
 	english = []
 	spanish = []
+	header_img_url = ""
 
 	data.each_with_index do |row, row_index|
 		html_open = ''
@@ -154,6 +155,10 @@ def parse_sheet_data(data)
 			else
 				html_close	= ')"></div><div class="chapter">'
 			end
+			if header_img_url.length == 0
+				# only get the first one (not that there should be more)
+				header_img_url = row[:original]
+			end
 		when 'headerimgcaption'
 			html_open	= '<div class="header_img_caption">'
 			html_close	= '</div><div class="chapter">'
@@ -180,6 +185,12 @@ def parse_sheet_data(data)
 	html[:original]	= original.join("\n")
 	html[:english]	= english.join("\n")
 	html[:spanish]	= spanish.join("\n")
+
+	if header_img_url.length == 0
+		# use default if no header image
+		header_img_url = "http://mobilitymovilidad.s3.amazonaws.com/proyectocarritobook/bookcoverstudio.jpg"
+	end
+	html[:header_img_url] 	= header_img_url
 
 	return html
 end
